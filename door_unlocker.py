@@ -1,5 +1,11 @@
 from gpiozero import OutputDevice
 from time import sleep
+import multiprocessing
+
+def unlock_then_lock(output_device):
+    output_device.on()
+    sleep(3)
+    output_device.off()
 
 class DoorUnlocker:
     GPIO_PIN = 18
@@ -9,9 +15,16 @@ class DoorUnlocker:
         
     def unlock_door(self):
         try:
-            self.output_device.on()
-            sleep(3)
-            self.output_device.off()
+            process = multiprocessing.Process(
+                target=unlock_then_lock,
+                args=(self.output_device,)
+            )
+            process.daemon = True
+            process.start()  # Start the new process immediately
+            return process
+            # self.output_device.on()
+            # sleep(3)
+            # self.output_device.off()
         except Exception as e:
             self.output_device.off()
             
