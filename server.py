@@ -8,7 +8,7 @@ door_unlocker = DoorUnlocker()
 def unlock_action():
     print("Unlock endpoint accessed!")
     door_unlocker.unlock_door()
-    return {"status": "success", "message": "Unlock action executed"}
+    return {"unlocked": "true"}
 
 @app.route('/unlock', methods=['GET'])
 def unlock():
@@ -24,7 +24,10 @@ def unlock():
 def get_status_action():
     print("Status endpoint accessed!")
     status = door_unlocker.get_status()
-    return {"status": "success", "message": f"{status}"}
+    if status == "UNLOCKED":
+        return {"unlocked": "true"}
+    else:
+        return {"unlocked": "false"}
 
 @app.route('/get_status', methods=['GET'])
 def get_status():
