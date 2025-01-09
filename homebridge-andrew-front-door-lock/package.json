@@ -1,0 +1,21 @@
+{
+    "name": "homebridge-andrew-front-door-lock",
+    "version": "1.0.0",
+    "description": "Unlocking Andrew's front door",
+    "main": "index.js",
+    "keywords": [
+        "homebridge-plugin"
+    ],
+    "engines": {
+        "homebridge": ">=1.0.0"
+    },
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "hap-nodejs": "^1.1.0",
+        "homebridge": "^1.8.5"
+    }
+}

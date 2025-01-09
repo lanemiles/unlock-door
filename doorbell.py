@@ -1,7 +1,7 @@
 import serial
 
 # Replace 'COM3' with your Arduino's serial port (e.g., 'COMx' on Windows or '/dev/ttyUSBx' on Linux/Mac)
-arduino_port = "/dev/tty.usbmodem101"
+arduino_port = "/dev/ttyACM0"
 baud_rate = 9600
 
 # Establish a connection to the Arduino
@@ -21,12 +21,8 @@ def main():
     while True:
         user_input = input("Enter command: ").strip().upper()
         if user_input == "EXIT":
-            print("Exiting...")
             break
-        elif user_input in ["ON", "OFF"]:
-            send_command(user_input)
-        else:
-            print("Invalid command. Please type 'ON', 'OFF', or 'EXIT'.")
+        send_command(user_input)
 
     arduino.close()  # Close the serial connection
 
