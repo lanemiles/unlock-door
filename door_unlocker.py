@@ -21,10 +21,6 @@ class DoorUnlocker:
             )
             process.daemon = True
             process.start()  # Start the new process immediately
-            return process
-            # self.output_device.on()
-            # sleep(3)
-            # self.output_device.off()
         except Exception as e:
             self.output_device.off()
             
