@@ -8,7 +8,7 @@ door_unlocker = DoorUnlocker()
 def unlock_action():
     print("Unlock endpoint accessed!")
     door_unlocker.unlock_door()
-    return {"unlocked": "true"}
+    return {"unlocked": "false"}
 
 @app.route('/unlock', methods=['GET'])
 def unlock():
