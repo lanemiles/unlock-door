@@ -15,15 +15,15 @@ class DoorUnlocker:
         
     def unlock_door(self):
         try:
-            # process = multiprocessing.Process(
-            #     target=unlock_then_lock,
-            #     args=(self.output_device,)
-            # )
-            # process.daemon = True
-            # process.start()  # Start the new process immediately
-            self.output_device.on()
-            sleep(3)
-            self.output_device.off()
+            process = multiprocessing.Process(
+                target=unlock_then_lock,
+                args=(self.output_device,)
+            )
+            process.daemon = True
+            process.start()  # Start the new process immediately
+            # self.output_device.on()
+            # sleep(3)
+            # self.output_device.off()
         except Exception as e:
             self.output_device.off()
             
